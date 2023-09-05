@@ -3,10 +3,6 @@ import ExpenseDate from './ExpenseDate';
 
 function ExpenseDestructure({id,title,amount,date}){
 
-    // let id = expense.id;
-    // let title=expense.title;
-    // let amount=expense.amount;
-    // let date =expense.date;
     return(
     <div className="expense-item">
           <ExpenseDate date={date} />

@@ -21,6 +21,7 @@ function ExpenseItem(props) {
 
 export default ExpenseItem;
 
+//learnings:
 //alternatives to set props
 // you can directly destructure props in the arguments itself, ({date,title,amount})
 // then directly access inside your component with above variable names.
