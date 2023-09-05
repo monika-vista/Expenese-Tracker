@@ -34,12 +34,16 @@ function Home() {
   const getData = (prevData) => {
     addExpense((expenses) => [prevData, ...expenses]);
   };
+
+  const updateModifiedData =(data) =>{
+    addExpense((expense)=>expense.filter((e)=>e!==data));
+  }
   
 
   return (
     <div className="App">
-      <NewExpense passDataToApp={getData} />
-      <Expenses expense={expenses} />
+      <NewExpense passDataToApp={getData} /> <Expenses expense={expenses} modifiedData={updateModifiedData} newData={expenses[0]}/>
+    
     </div>
   );
 }

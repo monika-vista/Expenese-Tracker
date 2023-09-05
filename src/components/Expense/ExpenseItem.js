@@ -3,15 +3,14 @@ import "./ExpenseItem.css";
 import Card from "../UI/Card/Card";
 
 function ExpenseItem(props) {
-  let expense = props.arr;
+
   return (
     <Card>
       {
-      expense.map((exp) => {
+      props.arr.map((exp) => {
         return (
           <Card>
-            <ExpenseDestructure key={exp.id} title={exp.title} amount=
-            {exp.amount} date={exp.date} />
+            <ExpenseDestructure expense={exp} onchange={props.onchange} ondelete={props.ondelete}/>
           </Card>
         );
       })}
@@ -21,7 +20,6 @@ function ExpenseItem(props) {
 
 export default ExpenseItem;
 
-//learnings:
 //alternatives to set props
 // you can directly destructure props in the arguments itself, ({date,title,amount})
 // then directly access inside your component with above variable names.
