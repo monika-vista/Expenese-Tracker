@@ -13,11 +13,7 @@ function NewExpense(props) {
   const [status, setStatus] = useState(false);
 
   const setClickStatus=(event)=>{
-    if (status===true){
-      setStatus(false);
-    }else{
-      setStatus(true);
-    }
+    setStatus(status=>!status)
 }
   let newButton=<button onClick={setClickStatus}>Add new expense</button>
   if(status){

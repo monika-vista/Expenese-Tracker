@@ -92,8 +92,8 @@ const Expenses = (props) => {
   } else {
     filterData = (
       <>
-        <ExpensesChart expense={props.expense} />
-        <ExpenseItem arr={props.expense} onchange={handleChange} ondelete={handleDelete} />
+        <ExpensesChart expense={allExpense} />
+        <ExpenseItem arr={allExpense} onchange={handleChange} ondelete={handleDelete} />
       </>
     )
   }
