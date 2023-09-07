@@ -3,15 +3,13 @@ import ExpenseDate from "./ExpenseDate";
 import { useState } from "react";
 
 function ExpenseDestructure({ expense, onchange, ondelete }) {
-  let id = expense.id;
-  let title = expense.title;
-  let amount = expense.amount;
-  let date = expense.date;
+  let {id,title,amount,date}= expense;
   const [isEditing, setIsEditing] = useState(false);
   let ExpenseItemContent;
   if (isEditing) {
     ExpenseItemContent = (
       <div className="expense-item__description">
+        <input type="date" placeholder={date} onChange={(e) => onchange({ ...expense, date: e.target.valueAsDate })} />
         <input
           type="text"
           placeholder={title}
@@ -23,7 +21,7 @@ function ExpenseDestructure({ expense, onchange, ondelete }) {
           step="0.01"
           className="expense-item__price"
           placeholder={amount}
-          onChange={(e) => onchange({ ...expense, amount: e.target.value })}
+          onChange={(e) => onchange({ ...expense, amount: e.target.valueAsNumber })}
         />
         <button onClick={() => setIsEditing(false)}>Save</button>
       </div>
@@ -31,6 +29,7 @@ function ExpenseDestructure({ expense, onchange, ondelete }) {
   } else {
     ExpenseItemContent = (
       <div className="expense-item__description">
+        <ExpenseDate date={date} />
         <h2>{title}</h2>
         <div className="expense-item__price">{amount}</div>
         <button onClick={() => setIsEditing(true)}>Edit</button>
@@ -40,9 +39,8 @@ function ExpenseDestructure({ expense, onchange, ondelete }) {
 
   return (
     <div className="expense-item">
-      <ExpenseDate date={date} />
       {ExpenseItemContent}
-      <button onClick={() => ondelete(id)}>Delete</button>
+      <button onClick={() => {ondelete(id); setIsEditing(isEditing=>isEditing===true?!isEditing:isEditing)}}>Delete</button>
     </div>
   );
 }
