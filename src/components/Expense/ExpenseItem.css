@@ -28,7 +28,7 @@
   color: white;
 }
 
-.expense-item__description input[type=text], input[type=date]{
+.expense-item__description input[type=text],.expense-item__description input[type=date]{
   color: white;
   font-size: 1rem;
   flex: 1;
